@@ -8,9 +8,7 @@ import PostForm from "../components/PostForm";
 import styles from "../styles/Home.module.scss";
 
 export default function Home({ posts }) {
-  console.log("posts", posts);
   const { user, logIn, logOut } = useAuth();
-
   console.log("user", user);
 
   return (
@@ -46,7 +44,13 @@ export default function Home({ posts }) {
             const { content, id, date } = post;
             return (
               <li key={id}>
-                <Post content={content} date={date} />
+                <Post
+                  content={content}
+                  date={new Intl.DateTimeFormat("en-US", {
+                    dateStyle: "short",
+                    timeStyle: "short",
+                  }).format(new Date(date))}
+                />
               </li>
             );
           })}
