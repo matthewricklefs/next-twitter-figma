@@ -7,7 +7,8 @@ import PostForm from "../components/PostForm";
 
 import styles from "../styles/Home.module.scss";
 
-export default function Home() {
+export default function Home({ posts }) {
+  console.log("posts", posts);
   const { user, logIn, logOut } = useAuth();
 
   console.log("user", user);
@@ -41,37 +42,46 @@ export default function Home() {
         />
 
         <ul className={styles.post}>
-          <li>
-            <Post content="Hey, I'm a new post!" date="01/24/2021" />
-          </li>
-
-          <li>
-            <Post
-              content="I’m working in Figma, designing a website to display all of my
-              tweets!"
-              date="01/24/2022"
-            />
-          </li>
-
-          <li>
-            <Post
-              content="I’m working in Figma, designing a website to display all of my
-              tweets!"
-              date="01/24/2022"
-            />
-          </li>
-
-          <li>
-            <Post
-              content="I’m working in Figma, designing a website to display all of my
-              tweets!"
-              date="01/24/2022"
-            />
-          </li>
+          {posts.map((post) => {
+            const { content, id, date } = post;
+            return (
+              <li key={id}>
+                <Post content={content} date={date} />
+              </li>
+            );
+          })}
         </ul>
 
         {user && <PostForm />}
       </main>
     </div>
   );
+}
+
+export async function getStaticProps() {
+  const response = await fetch(
+    "https://api.airtable.com/v0/appgTRr2CCnllvrVz/Table%201?maxRecords=3&view=Grid%20view",
+    {
+      headers: {
+        Authorization: `Bearer keyj6KgxvJNCZHuPA`,
+      },
+    }
+  );
+
+  const { records } = await response.json();
+
+  console.log("json", records);
+
+  const posts = records.map((record) => {
+    return {
+      id: record.id,
+      ...record.fields,
+    };
+  });
+
+  return {
+    props: {
+      posts,
+    },
+  };
 }
