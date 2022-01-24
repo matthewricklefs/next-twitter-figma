@@ -17,10 +17,3 @@ const Bio = ({ headshot, name, tagline, role }) => {
 };
 
 export default Bio;
-
-<Bio
-  headshot=""
-  name="Matthew Ricklefs"
-  tagline="Helping others to learn by doing!"
-  role="Developer Advocate @ Humana"
-/>;

@@ -1,6 +1,8 @@
 import Head from "next/head";
+import Bio from "../components/Bio/Bio";
 import Post from "../components/Post";
 import PostForm from "../components/PostForm";
+
 import styles from "../styles/Home.module.scss";
 
 export default function Home() {
@@ -13,7 +15,12 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>My Posts</h1>
+        <Bio
+          headshot="https://pbs.twimg.com/profile_images/1347599595115868162/dSzyyv9m_400x400.jpg"
+          name="Matthew Ricklefs"
+          tagline="Helping others to learn by doing!"
+          role="Developer Advocate @ Humana"
+        />
 
         <ul className={styles.post}>
           <li>

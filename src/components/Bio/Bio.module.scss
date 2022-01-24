@@ -1,0 +1,41 @@
+.bio {
+  display: flex;
+}
+
+.bioImage {
+  margin-right: 3em;
+
+  img {
+    width: 16em;
+    height: auto;
+    border-radius: 50%;
+  }
+}
+
+.bioContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.bioContentName {
+  font-weight: 900;
+  font-size: 52px;
+  line-height: 61px;
+  margin: 0%;
+}
+
+.bioContentTagline {
+  margin-top: 0.2em;
+  margin-bottom: 0.4em;
+  font-weight: 600;
+  font-size: 40px;
+  line-height: 47px;
+}
+
+.bioContentRole {
+  font-weight: 500;
+  font-size: 36px;
+  line-height: 42px;
+  margin: 0%;
+}
