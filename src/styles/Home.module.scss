@@ -25,7 +25,7 @@ $primary-color: blueviolet;
     padding: 0%;
     margin: 5em 0;
 
-    li {
+    & > li {
       margin-bottom: 3em;
 
       &:last-child {
