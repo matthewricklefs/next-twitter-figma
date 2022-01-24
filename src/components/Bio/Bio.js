@@ -4,6 +4,7 @@ const Bio = ({ headshot, name, tagline, role }) => {
   return (
     <div className={styles.bio}>
       <div className={styles.bioImage}>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src={headshot} alt={`Headshot of ${name}`} />
       </div>
 
