@@ -1,16 +1,28 @@
-import { createContext, useContext } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
+import { init, logIn as authLogIn } from "../lib/auth.js";
 
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
+  const [user, setUser] = useState();
+  useEffect(() => {
+    init((user) => {
+      setUser(user);
+    });
+  }, []);
+
+  function logIn() {
+    authLogIn();
+    console.log("Log in!");
+  }
+
+  const contextValue = {
+    user,
+    logIn,
+  };
+
   return (
-    <AuthContext.Provider
-      value={{
-        test: true,
-      }}
-    >
-      {children}
-    </AuthContext.Provider>
+    <AuthContext.Provider value={contextValue}>{children}</AuthContext.Provider>
   );
 };
 

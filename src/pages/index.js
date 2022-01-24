@@ -8,7 +8,10 @@ import PostForm from "../components/PostForm";
 import styles from "../styles/Home.module.scss";
 
 export default function Home() {
-  const auth = useAuth();
+  const { user, logIn } = useAuth();
+
+  console.log("user", user);
+
   return (
     <div className={styles.container}>
       <Head>
@@ -17,9 +20,13 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
+      <p>
+        <button onClick={logIn}>Log In</button>
+      </p>
+
       <main className={styles.main}>
         <Bio
-          headshot="https://pbs.twimg.com/profile_images/1347599595115868162/dSzyyv9m_400x400.jpg"
+          headshot="https://images.unsplash.com/photo-1632922267756-9b71242b1592?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NDR8fGF2YXRhcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
           name="Matthew Ricklefs"
           tagline="Helping others to learn by doing!"
           role="Developer Advocate @ Humana"
