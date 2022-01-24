@@ -8,7 +8,7 @@ import PostForm from "../components/PostForm";
 import styles from "../styles/Home.module.scss";
 
 export default function Home() {
-  const { user, logIn } = useAuth();
+  const { user, logIn, logOut } = useAuth();
 
   console.log("user", user);
 
@@ -20,9 +20,17 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <p>
-        <button onClick={logIn}>Log In</button>
-      </p>
+      {!user && (
+        <p>
+          <button onClick={logIn}>Log In</button>
+        </p>
+      )}
+
+      {user && (
+        <p>
+          <button onClick={logOut}>Log Out</button>
+        </p>
+      )}
 
       <main className={styles.main}>
         <Bio
@@ -62,7 +70,7 @@ export default function Home() {
           </li>
         </ul>
 
-        <PostForm />
+        {user && <PostForm />}
       </main>
     </div>
   );
