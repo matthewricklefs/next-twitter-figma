@@ -1,5 +1,6 @@
 import styles from "./Bio.module.scss";
 
+// TODO: Replace stock image with an actual image of you!
 const Bio = ({ headshot, name, tagline, role }) => {
   return (
     <div className={styles.bio}>

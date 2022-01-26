@@ -1,5 +1,5 @@
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-
+//TODO: EXTREMELY IMPORTANT
+// ENVVARS LEAKED CLONE AND REPRODUCE REPO
 // eslint-disable-next-line import/no-anonymous-default-export
 export default async (req, res) => {
   if (req.method === "GET") {
@@ -24,6 +24,9 @@ export default async (req, res) => {
     return;
   }
 
+  // TODO: The post submission isn't effectively mutating in state?
+  // Are the posts generating in the AirTable DB
+  // What does the network tab provide, additional details?
   if (req.method === "POST") {
     const { authorization } = req.headers;
     const auth = await fetch(`${process.env.NEXT_PUBLIC_AUTH_ENDPOINT}/user`, {

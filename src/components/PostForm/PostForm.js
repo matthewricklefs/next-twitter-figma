@@ -1,4 +1,3 @@
-import { FaShieldVirus } from "react-icons/fa";
 import styles from "./PostForm.module.scss";
 
 const PostForm = ({ onSubmit }) => {
@@ -19,6 +18,7 @@ const PostForm = ({ onSubmit }) => {
   }
 
   return (
+    // TODO: adjust UX for form submission button
     <form onSubmit={handleOnSubmit}>
       <textarea name="content" className={styles.formContent}></textarea>
       <button className={styles.formButton}>Add New Post</button>
