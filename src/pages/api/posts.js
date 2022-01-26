@@ -54,10 +54,9 @@ export default async (req, res) => {
         },
       ],
     };
-    // Table%201?maxRecords=3&view=Grid%20view
 
     const response = await fetch(
-      `https://api.airtable.com/v0/${process.env.AIRTABLE_BASE_ID}/Posts`,
+      `https://api.airtable.com/v0/${process.env.AIRTABLE_BASE_ID}/Table%201?maxRecords=3&view=Grid%20view`,
       {
         method: "POST",
         headers: {
