@@ -14,6 +14,7 @@ const PostForm = ({ onSubmit }) => {
 
     if (typeof onSubmit === "function") {
       onSubmit(data, e);
+      console.log(data);
     }
   }
 

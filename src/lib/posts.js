@@ -5,11 +5,12 @@ export async function getAllPosts() {
     `${process.env.NEXT_PUBLIC_API_ENDPOINT}/api/posts`
   );
   const { posts } = await response.json();
+  console.log("posts/lib posts: ", posts);
   return posts;
 }
 
 export async function createPost(data) {
-  const user = auth.currentUser();
+  // const user = auth.currentUser();
 
   await fetch(`${process.env.NEXT_PUBLIC_API_ENDPOINT}/api/posts`, {
     method: "POST",

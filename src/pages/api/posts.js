@@ -4,7 +4,7 @@
 export default async (req, res) => {
   if (req.method === "GET") {
     const response = await fetch(
-      `https://api.airtable.com/v0/${process.env.AIRTABLE_BASE_ID}/Table%201?maxRecords=3&view=Grid%20view`,
+      `https://api.airtable.com/v0/${process.env.AIRTABLE_BASE_ID}/Table%201`,
       {
         headers: {
           Authorization: `Bearer ${process.env.AIRTABLE_API_KEY}`,
@@ -13,12 +13,15 @@ export default async (req, res) => {
     );
 
     const { records } = await response.json();
+    console.log("pages/api/posts records", records);
     const posts = records.map((record) => {
       return {
         id: record.id,
         ...record.fields,
       };
     });
+
+    console.log("pages/api/posts", posts);
 
     res.status(200).json({ posts });
     return;
@@ -56,7 +59,7 @@ export default async (req, res) => {
     };
 
     const response = await fetch(
-      `https://api.airtable.com/v0/${process.env.AIRTABLE_BASE_ID}/Table%201?maxRecords=3&view=Grid%20view`,
+      `https://api.airtable.com/v0/${process.env.AIRTABLE_BASE_ID}/Table%201`,
       {
         method: "POST",
         headers: {
