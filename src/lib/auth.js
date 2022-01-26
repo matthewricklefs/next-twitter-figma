@@ -7,7 +7,9 @@ export function init(callback) {
     callback(user);
   });
 
-  netlifyIdentity.init();
+  netlifyIdentity.init({
+    APIUrl: process.env.NEXT_PUBLIC_AUTH_ENDPOINT,
+  });
 }
 
 export function logIn(callback) {

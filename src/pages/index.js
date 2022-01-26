@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
-import Head from "next/head";
-
+import { useState } from "react";
 import { useAuth } from "../hooks/useAuth";
+import { getAllPosts, createPost } from "../lib/posts";
 
+import Head from "next/head";
 import Bio from "../components/Bio/Bio";
 import Post from "../components/Post";
 import PostForm from "../components/PostForm";
@@ -10,19 +10,20 @@ import PostForm from "../components/PostForm";
 import styles from "../styles/Home.module.scss";
 
 export default function Home({ posts: defaultPosts }) {
-  const { user, logIn, logOut } = useAuth();
   const [posts, updatePosts] = useState(defaultPosts);
 
-  useEffect(() => {
-    async function run() {
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_ENDPOINT}/api/posts`
-      );
-      const { posts } = await response.json();
-      updatePosts(posts);
-    }
-    run();
-  }, []);
+  const postsSorted = posts.sort(function (a, b) {
+    return new Date(b.date) - new Date(a.date);
+  });
+
+  const { user, logIn, logOut } = useAuth();
+
+  async function handleOnSubmit(data, e) {
+    e.preventDefault();
+    await createPost(data);
+    const posts = await getAllPosts();
+    updatePosts(posts);
+  }
 
   return (
     <div className={styles.container}>
@@ -32,12 +33,13 @@ export default function Home({ posts: defaultPosts }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
+      {/* Login */}
       {!user && (
         <p>
           <button onClick={logIn}>Log In</button>
         </p>
       )}
-
+      {/* Logout */}
       {user && (
         <p>
           <button onClick={logOut}>Log Out</button>
@@ -53,8 +55,9 @@ export default function Home({ posts: defaultPosts }) {
         />
 
         <ul className={styles.post}>
-          {posts.map((post) => {
+          {postsSorted.map((post) => {
             const { content, id, date } = post;
+
             return (
               <li key={id}>
                 <Post
@@ -69,17 +72,14 @@ export default function Home({ posts: defaultPosts }) {
           })}
         </ul>
 
-        {user && <PostForm />}
+        {user && <PostForm onSubmit={handleOnSubmit} />}
       </main>
     </div>
   );
 }
 
 export async function getStaticProps() {
-  const response = await fetch(
-    `${process.env.NEXT_PUBLIC_API_ENDPOINT}/api/posts`
-  );
-  const { posts } = await response.json();
+  const posts = await getAllPosts();
 
   return {
     props: {
