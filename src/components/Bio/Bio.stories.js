@@ -9,7 +9,7 @@ export default {
 
 const Template = () => (
   <Bio
-    headshot="https://pbs.twimg.com/profile_images/1347599595115868162/dSzyyv9m_400x400.jpg"
+    headshot="https://avatars.githubusercontent.com/u/72839408?s=400&u=e522c920900a3f11340ec9ed062de7d582aaf019&v=4"
     name="Matthew Ricklefs"
     tagline="Helping others to learn by doing!"
     role="Developer Advocate @ Humana"
