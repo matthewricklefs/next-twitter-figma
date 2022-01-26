@@ -16,7 +16,6 @@ export default function Home({ posts: defaultPosts }) {
     return new Date(b.date) - new Date(a.date);
   });
 
-  console.log("postsSorted", postsSorted);
   const { user, logIn, logOut } = useAuth();
 
   async function handleOnSubmit(data, e) {

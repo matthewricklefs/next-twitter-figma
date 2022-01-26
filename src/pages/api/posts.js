@@ -13,7 +13,6 @@ export default async (req, res) => {
     );
 
     const { records } = await response.json();
-    console.log("pages/api/posts records", records);
     const posts = records.map((record) => {
       return {
         id: record.id,
@@ -21,15 +20,11 @@ export default async (req, res) => {
       };
     });
 
-    console.log("pages/api/posts", posts);
-
     res.status(200).json({ posts });
     return;
   }
 
   // TODO: The post submission isn't effectively mutating in state?
-  // Are the posts generating in the AirTable DB
-  // What does the network tab provide, additional details?
   if (req.method === "POST") {
     const { authorization } = req.headers;
     const auth = await fetch(`${process.env.NEXT_PUBLIC_AUTH_ENDPOINT}/user`, {

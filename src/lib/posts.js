@@ -5,7 +5,6 @@ export async function getAllPosts() {
     `${process.env.NEXT_PUBLIC_API_ENDPOINT}/api/posts`
   );
   const { posts } = await response.json();
-  console.log("posts/lib posts: ", posts);
   return posts;
 }
 
