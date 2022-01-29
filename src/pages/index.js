@@ -53,7 +53,7 @@ export default function Home({ posts: defaultPosts }) {
 
       <main className={styles.main}>
         <Bio
-          headshot="https://images.unsplash.com/photo-1632922267756-9b71242b1592?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NDR8fGF2YXRhcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
+          headshot="https://github.com/matthewricklefs/hosted-assets/blob/main/matty4.jpeg?raw=true"
           name="Matthew Ricklefs"
           tagline="Helping others to learn by doing!"
           role="Developer Advocate @ Humana"
