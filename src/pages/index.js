@@ -18,6 +18,9 @@ export default function Home({ posts: defaultPosts }) {
 
   const { user, logIn, logOut } = useAuth();
 
+  // Computation by Side Effect
+  // A function is modifying memory that is outside of it's another part of the program.
+  //
   async function handleOnSubmit(data, e) {
     e.preventDefault();
 

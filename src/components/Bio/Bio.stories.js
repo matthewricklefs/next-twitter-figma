@@ -9,7 +9,7 @@ export default {
 
 const Template = () => (
   <Bio
-    headshot="https://avatars.githubusercontent.com/u/72839408?s=400&u=e522c920900a3f11340ec9ed062de7d582aaf019&v=4"
+    headshot="https://github.com/matthewricklefs/hosted-assets/blob/main/matty4.jpeg?raw=true"
     name="Matthew Ricklefs"
     tagline="Helping others to learn by doing!"
     role="Developer Advocate @ Humana"
